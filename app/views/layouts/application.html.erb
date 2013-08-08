@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whitebox</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="mainContainer" class="clearfix">
+				<div id="header">
+				<div id="topbar">
+					<ul class="nav" id="nav-primary">
+						<li><a href="#/">Home</a></li>
+						<li><a href="#/">About</a></li>
+						<li><a href="#/">Advertise</a></li>
+						<li><a href="#/">Contact</a></li>
+						<li><a href="#/">Archive</a></li>
+					</ul>
+
+					<div class="searchform">
+						<input type="text" name="search" id="search" placeholder="Search" />
+					</div>
+
+					<div id="weather">
+						<p>85° <img src="/assets/34.gif" /> CLOUDS &amp; SUN</p>
+					</div>
+
+					<ul class="nav social-media">
+						<li><a class="btn-fb" href="#/">Facebook</a></li>
+						<li><a class="btn-twitter" href="#/">Twitter</a></li>
+						<li><a class="btn-youtube" href="#/">YouTube</a></li>
+						<li><a class="btn-notsure" href="#/">??</a></li>
+						<li><a class="btn-vimeo" href="#/">Vimeo</a></li>
+						<li><a class="btn-rss" href="#/">RSS</a></li>
+					</ul>
+				</div>
+
+				<img src="/assets/logo_lg.gif" alt="redbank green White Box" />
+
+				<ul class="nav" id="nav-secondary">
+						<li><a href="#/">PieHole</a></li>
+						<li><a href="#/">All Good</a></li>
+						<li><a href="#/">Green Screen</a></li>
+						<li><a href="#/">Roof Above</a></li>
+						<li><a href="#/">In Store</a></li>
+						<li><a href="#/">Sports</a></li>
+						<li><a href="#/">Calendar</a></li>
+						<li><a href="#/">Weddings</a></li>
+						<li><a href="#/">FlashBank</a></li>
+						<li><a href="#/">The Rumstones</a></li>
+						<li><a href="#/">Classifieds</a></li>
+						<li><a href="#/">Obits</a></li>
+				</ul>
+			</div><!-- end header -->
+				
+			<div id="content">
+				<div class="container">
+				<%= yield %>
+				</div>
+			</div><!-- end content -->
+
+<div id="footer">
+				<img class="logo-redbankgreen" src="/assets/footer_logo.jpg" alt="redbank green">
+				<div id="footer-content">
+					<ul class="nav social-media">
+						<li><a class="btn-fb" href="#/">Facebook</a></li>
+						<li><a class="btn-twitter" href="#/">Twitter</a></li>
+						<li><a class="btn-youtube" href="#/">YouTube</a></li>
+						<li><a class="btn-notsure" href="#/">??</a></li>
+						<li><a class="btn-vimeo" href="#/">Vimeo</a></li>
+						<li><a class="btn-rss" href="#/">RSS</a></li>
+					</ul>
+					<div class="clear"></div>
+					<p class="address">
+						<strong>redbankgreen.com</strong><br />
+						PO Box 8683<br />
+						Red Bank NJ 07701
+					</p>
+					<ul class="nav footer-nav fn1">
+						<li><a href="#/">Home</a></li>
+						<li><a href="#/">PieHole</a></li>
+						<li><a href="#/">Calendar</a></li>
+					</ul>
+					<ul class="nav footer-nav fn2">
+						<li><a href="#/">About</a></li>
+						<li><a href="#/">All&nbsp;Good</a></li>
+						<li><a href="#/">Weddings</a></li>
+					</ul>
+					<ul class="nav footer-nav fn3">
+						<li><a href="#/">Advertise</a></li>
+						<li><a href="#/">Green&nbsp;Screen</a></li>
+						<li><a href="#/">FlashBank</a></li>
+					</ul>
+					<ul class="nav footer-nav fn4">
+						<li><a href="#/">Contact</a></li>
+						<li><a href="#/">Roof&nbsp;Above</a></li>
+						<li><a href="#/">The&nbsp;Rumstones</a></li>
+					</ul>
+					<ul class="nav footer-nav fn5">
+						<li><a href="#/">Archive</a></li>
+						<li><a href="#/">In&nbsp;Store</a></li>
+						<li><a href="#/">Classifieds</a></li>
+					</ul>
+					<ul class="nav footer-nav fn6">
+						<li>&nbsp;</li>
+						<li><a href="#/">Sports</a></li>
+						<li><a href="#/">Obits</a></li>
+					</ul>
+					<p id="copyright">&copy; 2013 redbankgreen.com. No portion of this website or its content can be used without permission. All rights reserved.</p>
+				</div>
+			</div><!-- end footer -->
+
+
+</body>
+</html>

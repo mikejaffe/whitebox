@@ -1,0 +1,38 @@
+			<%= form_for @order,:url => orders_path, :html => {:method => :post } do |f| %>
+				<%= f.fields_for :line_items do |l| %>
+				<div class="container">
+					<h1 class="hdr_pickSize">white box ads come in two sizes. Pick One and get started.</h1>
+					
+					<fieldset>
+						<% 
+						i=0
+						@products.each do |p| %>
+						<div class="checkbox size-checkbox">
+							<label for="radio<%= i %>">
+						 
+								<%= l.radio_button :product_id,   p.id , :id => "radio#{i}", :class => "size-option" %>
+								<span class="label-text"><strong><%= p.name %></strong><br /><%= p.description %> Cost: <%= number_to_currency p.price %> a day</span>
+							</label>
+						</div>
+
+<!-- 						<div class="checkbox size-checkbox">
+							<label for="radio2">
+								<input type="radio" name="adsize" id="radio2" />
+								<span class="label-text"><strong>FLAT BOX</strong><br />468x60 pixels. Cost: $50 a day</span>
+							</label>
+						</div> -->
+						<% i = i +1
+						end %>
+					</fieldset>
+					
+				</div>
+
+				<hr class="bdr-dotted divider" />
+
+				<div class="container medias" style="display:none;">
+					
+				
+				</div>
+				<% end %>
+			<% end %>
+				

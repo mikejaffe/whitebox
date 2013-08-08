@@ -1,0 +1,24 @@
+
+				 
+
+						<h2>What do you want to say in your <strong>white box</strong>?<br />Some tips to keep in mind:</h2>
+						<ul>
+							<li>Your <strong>white box</strong> message appears as three frames of animated text.</li>
+							<li>Each frame has a maximum of 45 characters (no worries, we'll keep count for you).</li>
+							<li>It's best to keep <strong>white box</strong> messages brief and to the point.</li>
+							<li>Be sure to check your spelling</li>
+						</ul>
+
+						<p id="sizeChosen">You've chosen the <strong><%= @product.name %></strong> format. Enter your <strong>white box</strong> text here:</p>
+						
+						<div id="adTextInput">	
+							<% if @product.present? %>
+									 <ol>
+										<% @product.line_count.times do  %>
+											<li id="adLine1" class="adText"><input type="text" id="line1" name="medias[][media_text]" placeholder="ENTER FIRST FRAME OF ANIMATED TEXT HERE (MAXIMUM 45 CHARACTERS)"> <span class="charCount">00/45</span></li>
+										<% end %>
+									</ol>
+								<% end %>
+						</div>
+						
+						<input type="submit" class="btn btn-primary btn-center" value="AFTER YOU'VE ENTERED ALL YOUR TEXT ABOVE, CLICK HERE TO GENERATE AD PROOF." />
