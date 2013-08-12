@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808134944) do
+ActiveRecord::Schema.define(version: 20130812201950) do
 
   create_table "line_items", force: true do |t|
     t.integer  "order_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20130808134944) do
     t.string   "ship_state"
     t.string   "ship_zip"
     t.string   "ship_phone"
+    t.string   "paypal_result"
   end
 
   create_table "products", force: true do |t|

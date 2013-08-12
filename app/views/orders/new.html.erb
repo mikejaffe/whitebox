@@ -1,4 +1,4 @@
-			<%= form_for @order,:url => orders_path, :html => {:method => :post } do |f| %>
+			<%= form_for @order,:url => orders_path, :html => {:method => :post, :id => "newOrderForm" } do |f| %>
 				<%= f.fields_for :line_items do |l| %>
 				<div class="container">
 					<h1 class="hdr_pickSize">white box ads come in two sizes. Pick One and get started.</h1>
@@ -10,7 +10,7 @@
 						<div class="checkbox size-checkbox">
 							<label for="radio<%= i %>">
 						 
-								<%= l.radio_button :product_id,   p.id , :id => "radio#{i}", :class => "size-option" %>
+								<%= l.radio_button :product_id,   p.id , :id => "radio#{i}", :class => "size-option radio" %>
 								<span class="label-text"><strong><%= p.name %></strong><br /><%= p.description %> Cost: <%= number_to_currency p.price %> a day</span>
 							</label>
 						</div>

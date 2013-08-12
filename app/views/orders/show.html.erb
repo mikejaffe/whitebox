@@ -1,50 +1,71 @@
-<%= form_for :order ,:url => order_path(@order), :html => {:method => :put} do |f| %>
 
-					<!-- tall ad info/preview 
-					<div id="preview-tall-info">
+
+<%= form_for :order ,:url => order_path(@order), :html => {:method => :put, :class => 'preview', :id => 'previewForm' } do |f| %>
+
+					<!-- tall ad info/preview -->
+
+					<% if @order.line_items[0].product.sku.eql?("tall-box") %>
+										<div id="preview-tall-info">
 						<h1>Ok, here's how your <strong>white box</strong> ad will look:</h1>
-						<p><a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> <a class="btn btn-primary btn-preview" href="#/">TRY AGAIN</a></p>
+						<p><!--<a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> --> <a class="btn btn-primary btn-preview" href="/orders/new">TRY AGAIN</a> </p>
 						<p class="notice">Please Note: All <strong>white box</strong> ads are subject to prior review; once the <strong>white box</strong> ad has been approved for posting, you will receive an email notice. If your ad is rejected, you will have the opportunity to revise the ad or cancel the order.</p>
 					</div>
-					<div id="preview-tall">
-						<img src="/assets/preview_tall.gif" />
+					<div id="preview-tall" class="whitebox-ad whitebox-ad-tall">
+						<% @order.line_items[0].medias.each do |m| %>
+							<p class="ad-text ad-tall-text"><%= m.media_text %></p>
+						<%end %>	
 					</div>
-					-->
+					<div class="clear"></div>
+					<% end %>
 
+					<!-- flat ad info/preview -->
+					<% if @order.line_items[0].product.sku.eql?("flat-box") %>
 					<div id="preview-flat-info">
 						<h1>Ok, here's how your <strong>white box</strong> ad will look:</h1>
-						<img id="preview-flat" class="floatLeft" src="/assets/preview_flat.gif" />
-						<div class="preview-buttons floatLeft">
-							<a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> <a class="btn btn-primary btn-preview" href="#/">TRY AGAIN</a>
+						<div id="preview-flat" class="whitebox-ad whitebox-ad-flat">
+							<% @order.line_items[0].medias.each do |m| %>
+								<p class="ad-text ad-flat-text"><%= m.media_text %></p>
+							<%end %>							
 						</div>
+
+						<!--<img id="preview-flat" class="floatLeft" src="/assets/preview_flat.gif" /> -->
+						<div class="preview-buttons floatLeft">
+							<% # <a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> %>
+							<a class="btn btn-primary btn-preview" href="/orders/new">TRY AGAIN</a>
+						</div>
+
 						<div class="clear"></div>
 						<p class="notice">Please Note: All <strong>white box</strong> ads are subject to prior review; once the <strong>white box</strong> ad has been approved for posting, you will receive an email notice. If your ad is rejected, you will have the opportunity to revise the ad or cancel the order.</p>
-					</div>					
+					</div>
+					<% end %>					
 				</div>
 
 				<hr class="bdr-dotted divider" />
 
 				<div class="container">
 						<h2><strong>white box</strong> ads serve as a link. Where would you like readers to end up when they click the ad?</h2>
-						
+						<!-- ERROR EXAMPLE -->
+						<p id="adSourceError" class="error hide">Please provide a link.</p>
+						<!-- END ERROR -->
+
 						<fieldset id="ad-source">
 							<div class="checkbox size-checkbox">
 								<label for="radio1">
-									<input type="radio" name="adsize" id="radio1" /> 
+									<input type="radio" name="adSource" id="radio1" value="web" class="radio" checked="checked" /> 
 									 
 									<span class="label-text"><strong>WEBSITE, FACEBOOK OR EVITE PAGE</strong><br />
 										
-										<%= f.text_field :ad_url ,:class => "src-input", :placeholder => "ENTER WEBSITE, FACEBOOK OR EVITE ADDRESS" %>
+										<%= f.text_field :ad_url,:class => "src-input", :id => 'sourceweb', :placeholder => "ENTER WEBSITE, FACEBOOK OR EVITE ADDRESS" %>
 									</span>
 								</label>
 							</div>
 
 							<div class="checkbox size-checkbox">
 								<label for="radio2">
-									<input type="radio" name="adsize" id="radio2" />
+									<input type="radio" name="adSource" id="radio2" value="email" class="radio" />
 									<span class="label-text"><strong>PRE-ADDRESSED EMAIL</strong><br />
 									 
-										<%= f.text_field :ad_mailto ,:class => "src-input", :placeholder => "ENTER EMAIL ADDRESS" %>
+										<%= f.text_field :ad_mailto, :class => "src-input", :id => 'sourceemail', :placeholder => "ENTER EMAIL ADDRESS" %>
 									</span>
 								</label>
 							</div>
@@ -53,32 +74,36 @@
 						<h3>When do you want your <strong>white box</strong> ad to start and end?</h3>
 						<p><em>Please provide 24 hours advance notice of start date. All <strong>white box</strong> ads post from 12:00 am until 11:59:59 pm.</em></p>
 
+						<!-- ERROR EXAMPLE -->
+						<p class="error hide" id="adRunError">Please complete all fields to continue with your order.</p>
+						<!-- END ERROR -->
+
 						<fieldset id="start-end">
 							<div class="form-field">
 								<label class="lbl-solid floatLeft" for="startDate">START DATE</label>
 							 
-								<%= f.text_field :ad_start_date , :class =>"floatLeft", :id =>"startDate" %>
-								<a class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
+								<%= f.text_field :ad_start_date , :class =>"floatLeft", :readonly => 'readonly', :id =>"startDate" %>
+								<a data-date="startDate" class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
 								<a class="btn-clear floatLeft"><img src="/assets/icon_close.gif" alt="Clear" /></a>
 							</div>
 
 							<div class="form-field">
 								<label class="lbl-solid floatLeft" for="endDate">END DATE</label>
-								<%= f.text_field :ad_end_date , :class =>"floatLeft", :id =>"endDate"  %>
-								<a class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
+								<%= f.text_field :ad_end_date , :class =>"floatLeft", :readonly => 'readonly', :id =>"endDate"  %>
+								<a data-date="endDate" class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
 								<a class="btn-clear floatLeft"><img src="/assets/icon_close.gif" alt="Clear" /></a>
 							</div>
-
+							<input type="hidden" id="product_price" value="<%= @order.line_items[0].product.price %>">
 							<div class="form-field">
 								<label id="lbl-run" class="lbl-solid floatLeft" for="runDays">TOTAL RUN<br />IN DAYS</label>
 							 
 								<%= f.text_field :ad_run_days , :class =>"floatLeft", :id => "runDays" %>
 								<label id="lbl-cost" class="lbl-solid floatLeft" for="cost">TOTAL<br />COST</label>
 						 
-								<%= f.text_field :total_cost , :class =>"floatLeft", :id => "cost" %>
+								<%= f.text_field :total_cost , :class =>"floatLeft", :id => "cost", :value => '$0', :readonly => "readonly" %>
 							</div>
 
 							<img id="paymentTypes" src="/assets/payment_types.gif" alt="Payment Types: Paypal, Visa, Mastercard, Amex and Discover" />
 						</fieldset>
-						<input type="submit" class="btn btn-primary btn-center" value="ONE MORE STEP" />
+						<input type="submit" class="btn btn-primary btn-center" id="previewSubmit" value="ONE MORE STEP" />
 		<% end %>

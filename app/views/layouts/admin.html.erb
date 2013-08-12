@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Whitebox</title>
+ <style>
+body {
+	font-family: "Arial"
+
+}
+td, th {
+	font-size:12px;
+}
+ </style>
+  <%= javascript_include_tag "application"   %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body></html>

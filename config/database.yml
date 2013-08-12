@@ -17,9 +17,9 @@ development:
   encoding: unicode
   database: whitebox_development
   pool: 5
-  username: postgres
+  username: webdev
   password: t41b4t
-
+  host: 127.0.0.1
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
@@ -43,8 +43,9 @@ test:
   encoding: unicode
   database: whitebox_test
   pool: 5
-  username: postgres
+  username: webdev
   password: t41b4t
+  host: 127.0.0.1
 
 production:
   adapter: postgresql

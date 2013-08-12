@@ -1,0 +1,54 @@
+			<%= form_for :order, :url => checkout_path(@order), :html => {:method => :put, :id => "checkout_form"} do |f| %> 
+				<div class="container">
+						<h1>Tell us about you:</h1>
+
+						<!-- ERROR EXAMPLE -->
+						<p class="error" style="display:none;">Please provide your name and a valid email address.</p>
+						<!-- END ERROR -->
+
+						<fieldset id="about-form">
+							<div class="form-field">
+								<label class="lbl-solid floatLeft" for="fname">FIRST NAME</label>
+						 
+								<%= f.text_field :bill_first_name ,:class => "input-default floatLeft", :id => "fname" %>
+							</div>
+							<div class="form-field">
+								<label class="lbl-solid floatLeft" for="lname">LAST NAME</label>
+						 
+								<%= f.text_field :bill_last_name ,:class => "input-default floatLeft", :id => "lname" %>
+							</div>
+							<div class="form-field">
+								<label class="lbl-solid floatLeft" for="email">EMAIL</label>
+								 
+								<%= f.text_field :email ,:class => "input-default floatLeft", :id => "email" %>
+							</div>
+
+							<div class="form-field">
+								<label class="lbl-solid floatLeft" for="address">ADDRESS</label>
+						 
+								<%= f.text_field :bill_address1 ,:class => "input-default floatLeft", :id => "address" %>
+							</div>
+
+							<div class="form-field">
+								<label class="lbl-solid floatLeft" for="telephone">TELEPHONE</label>
+								<%= f.text_field :bill_address1 ,:class => "input-default floatLeft", :id => "telephone" %>
+							</div>
+
+							<div class="form-field">
+								<label class="lbl-solid floatLeft businessInfo" for="businessName">BUSINESS NAME</label>
+							 
+								<%= f.text_field :company_name ,:class => "input-default floatLeft businessInfo", :id => "businessName" %>
+							</div>
+
+							<div class="form-field">
+								<label class="lbl-solid floatLeft businessInfo" for="businessWebsite">BUSINESS WEBSITE</label>
+					 
+								<%= f.text_field :website ,:class => "input-default floatLeft businessInfo", :id => "businessWebsite" %>
+							</div>
+
+						</fieldset>
+						<input type="submit" id="about-submit" class="btn btn-primary btn-center" value="SUBMIT" />
+				</div>
+
+			 
+<% end %><div id="paypal" style="visibility:hidden;"></div>

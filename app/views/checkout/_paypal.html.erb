@@ -1,0 +1,17 @@
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="send_to_paypal">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="tx" value="KizQWybCve3uvGY04POOUW-iF0T3jyxFutbiewIcZUwVLlakjOgR4mhBLF8">
+<input type="hidden" name="custom" value="<%= @order.id %>">
+<input type="hidden" name="business" value="john.t.ward@redbankgreen.com">
+<input type="hidden" name="item_name" value="<%= @order.line_items[0].product.name %>">
+<input type="hidden" name="item_number" value="<%= @order.line_items[0].product.sku %>">
+<input type="hidden" name="amount" value="1.00" >
+<!-- <input type="hidden" name="amount" value="<%= @order.line_items[0].product.price * @order.ad_run_days %>"> -->
+<input type="hidden" name="first_name" value="<%= @order.bill_first_name %>">
+<input type="hidden" name="last_name" value="<%= @order.bill_last_name %>">
+ <INPUT TYPE="hidden" NAME="return" value="http://dev.mikewritescode.com:3000/checkout/complete">
+<input type="hidden" name="email" value="<%= @order.email %>">
+<input type="image" name="submit" border="0"
+src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+alt="PayPal - The safer, easier way to pay online">
+</form>

@@ -1,0 +1,11 @@
+<% if @order.status.eql?("Completed") %>
+
+<b>Your order <%= @order.order_number %> has been processed</b>. 
+<br><br>
+You will receive a notification and receipt from Paypal to <%= @order.email %>. If you have any questions please contact: redbankgreen@redbankgreen.com.
+
+
+<% else %>
+
+There was a problem processing your Paypal transaction. Please contact redbankgreen@redbankgreen.com.
+<% end %>

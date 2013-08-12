@@ -1,6 +1,8 @@
 class Order < ActiveRecord::Base
-	has_many :line_items
+	has_many :line_items, :dependent => :destroy
 	accepts_nested_attributes_for :line_items
+
+	validates_uniqueness_of :paypal_result, :allow_nil => true
 
 	before_create :generate_order_number
 

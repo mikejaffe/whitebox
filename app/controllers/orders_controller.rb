@@ -5,11 +5,12 @@ class OrdersController < ApplicationController
 		@products = Product.all
 		@order = Order.new
 		@order.line_items.build  
-
+		
 	end
 
 
 	def create
+		Order.find(session[:order]).destroy if !session[:order].nil?
 		@order = Order.new(order_params)
 		if @order.valid?
 			@order.save
@@ -31,7 +32,7 @@ class OrdersController < ApplicationController
 			@order.line_items[0].medias.destroy
 			@order.line_items[0].medias << Media.create(params[:medias])
 		end
-		render :show
+		redirect_to edit_checkout_path(@order)
 	end
 
 

@@ -3,16 +3,17 @@ Whitebox::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'orders#new'
-
-  resources :products 
+  root 'pages#index'
+  get 'checkout/complete' => 'checkout#complete'
+  get 'checkout/pdt' => 'checkout#pdt'
+  resources :products ,:checkout,:admin
 
   resources :orders do 
 
   end
 
   get 'pages/:action' => 'pages#action', :path => "/:action"
-
+ 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
