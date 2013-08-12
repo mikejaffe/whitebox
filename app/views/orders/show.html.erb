@@ -49,25 +49,21 @@
 						<!-- END ERROR -->
 
 						<fieldset id="ad-source">
-							<div class="checkbox size-checkbox">
+							<div class="size-radio">
 								<label for="radio1">
 									<input type="radio" name="adSource" id="radio1" value="web" class="radio" checked="checked" /> 
-									 
-									<span class="label-text"><strong>WEBSITE, FACEBOOK OR EVITE PAGE</strong><br />
-										
-										<%= f.text_field :ad_url,:class => "src-input", :id => 'sourceweb', :placeholder => "ENTER WEBSITE, FACEBOOK OR EVITE ADDRESS" %>
-									</span>
+									 <span class="label-text label-link"><strong>WEBSITE, FACEBOOK OR EVITE PAGE</strong></span>
 								</label>
+										
+								<div class="input-link"><%= f.text_field :ad_url,:class => "src-input", :id => 'sourceweb', :placeholder => "ENTER WEBSITE, FACEBOOK OR EVITE ADDRESS" %></div>
 							</div>
 
-							<div class="checkbox size-checkbox">
+							<div class="size-radio">
 								<label for="radio2">
 									<input type="radio" name="adSource" id="radio2" value="email" class="radio" />
-									<span class="label-text"><strong>PRE-ADDRESSED EMAIL</strong><br />
-									 
-										<%= f.text_field :ad_mailto, :class => "src-input", :id => 'sourceemail', :placeholder => "ENTER EMAIL ADDRESS" %>
-									</span>
+									<span class="label-text label-link"><strong>PRE-ADDRESSED EMAIL</strong></span>
 								</label>
+								<div class="input-link"><%= f.text_field :ad_mailto, :class => "src-input", :id => 'sourceemail', :placeholder => "ENTER EMAIL ADDRESS" %></div>
 							</div>
 						</fieldset>
 

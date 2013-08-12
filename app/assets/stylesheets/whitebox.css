@@ -104,19 +104,20 @@ div.radio, div.radio span { width: 42px; height: 42px; }
 div.radio span { background: transparent url(/assets/radio_button.gif) 0 -50px no-repeat; }
 div.radio span.checked { background-position: 0 0; }
 label { font-size: 15px; }
-span.label-text { display: inline-block; position: relative; top: 10px; }
+span.label-text { display: inline-block; position: relative; }
 label.lbl-solid {  font-size: 12px; width: 84px; text-align: center; height: 20px; background: #d2d2d2; color: #fff; padding: 8px 10px; display: inline-block; line-height: 22px; }
 .btn-clear, .btn-calendar { cursor: pointer; border-top: solid 1px #d2d2d2; border-bottom: solid 1px #d2d2d2; border-right: solid 1px #d2d2d2;}
 .btn-clear img, .btn-calendar img { float: left;}
 
 /** pick size */
 h1.hdr_pickSize { width: 675px; height: 0; overflow: hidden; padding-top: 70px; background: #fff url(/assets/hdr_pickSize.gif) no-repeat;}
-.size-checkbox { width: 50%; float: left; }
+.size-radio { width: 50%; float: left; }
 #adTextInput { border: solid 6px #000; padding: 40px 40px 10px; width: 580px; margin: 20px 0; }
 #adTextInput ol { list-style: none; margin: 0 auto; }
 #adTextInput li { color: #999; padding-left: 40px; margin-bottom: 29px; }
 #adTextInput input { background: #f7f7f7; border: solid 1px #d4d4d4; color: #999; width: 448px; height: 14px; padding: 10px; }
 span.charCount { margin: 0 10px; }
+span.label-type { top: 0; }
 li#lineText1 { background: transparent url(/assets/adInput1.gif) no-repeat; }
 li#lineText2 { background: transparent url(/assets/adInput2.gif) no-repeat; }
 li#lineText3 { background: transparent url(/assets/adInput3.gif) no-repeat; }
@@ -127,12 +128,14 @@ input#runDays, input#cost { height: 23px; }
 input#runDays { width: 44px; }
 input#cost { width: 74px; }p.notice { font-size: 13px; font-style: italic; line-height: 18px; }
 .btn-preview { margin-right: 8px; }
+span.label-link { top: -13px; }
 input.src-input { width: 269px; padding: 5px; }
 #lbl-cost { width: 47px; }
 #lbl-run, #lbl-cost { height: 29px; line-height: 16px; }
 fieldset#ad-source { margin-bottom: 40px; }
 fieldset#start-end { margin-bottom: 25px; }
 .preview-buttons { margin-top: 8px; }
+div.input-link { position: relative; left: 50px; top: -25px; }
 
 /** global preview styles */
 .ad-text { position: absolute; top: 10px; left: 4px; display: none; }
