@@ -23,7 +23,7 @@
 					</div>
 
 					<div id="weather">
-						<p>85° <img src="/assets/34.gif" /> CLOUDS &amp; SUN</p>
+						<p>85°   <%= image_tag "34.gif"   %> CLOUDS &amp; SUN</p>
 					</div>
 
 					<ul class="nav social-media">
@@ -36,7 +36,7 @@
 					</ul>
 				</div>
 
-				<img src="/assets/logo_lg.gif" alt="redbank green White Box" />
+				<%= image_tag "logo_lg.gif", :alt=>"redbank green White Box" %>
 
 				<ul class="nav" id="nav-secondary">
 						<li><a href="#/">PieHole</a></li>
@@ -55,13 +55,15 @@
 			</div><!-- end header -->
 				
 			<div id="content">
-				<div class="container">
+				
 				<%= yield %>
-				</div>
+				
 			</div><!-- end content -->
 
 <div id="footer">
-				<img class="logo-redbankgreen" src="/assets/footer_logo.jpg" alt="redbank green">
+				<%= image_tag "footer_logo.jpg", :class=>"logo-redbankgreen" %>
+		 
+				 
 				<div id="footer-content">
 					<ul class="nav social-media">
 						<li><a class="btn-fb" href="#/">Facebook</a></li>

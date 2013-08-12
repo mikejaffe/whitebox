@@ -1,7 +1,7 @@
 
 
 <%= form_for :order ,:url => order_path(@order), :html => {:method => :put, :class => 'preview', :id => 'previewForm' } do |f| %>
-
+				<div class="container">
 					<!-- tall ad info/preview -->
 
 					<% if @order.line_items[0].product.sku.eql?("tall-box") %>
@@ -79,15 +79,15 @@
 								<label class="lbl-solid floatLeft" for="startDate">START DATE</label>
 							 
 								<%= f.text_field :ad_start_date , :class =>"floatLeft", :readonly => 'readonly', :id =>"startDate" %>
-								<a data-date="startDate" class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
-								<a class="btn-clear floatLeft"><img src="/assets/icon_close.gif" alt="Clear" /></a>
+								<a data-date="startDate" class="btn-calendar floatLeft"><%= image_tag "icon_calendar.gif" %></a>
+								<a class="btn-clear floatLeft"><%= image_tag "icon_close.gif" %></a>
 							</div>
 
 							<div class="form-field">
 								<label class="lbl-solid floatLeft" for="endDate">END DATE</label>
 								<%= f.text_field :ad_end_date , :class =>"floatLeft", :readonly => 'readonly', :id =>"endDate"  %>
-								<a data-date="endDate" class="btn-calendar floatLeft"><img src="/assets/icon_calendar.gif" alt="Calendar" /></a>
-								<a class="btn-clear floatLeft"><img src="/assets/icon_close.gif" alt="Clear" /></a>
+								<a data-date="endDate" class="btn-calendar floatLeft"><%= image_tag "icon_calendar.gif" %></a>
+								<a class="btn-clear floatLeft"><%= image_tag "icon_close.gif" %></a>
 							</div>
 							<input type="hidden" id="product_price" value="<%= @order.line_items[0].product.price %>">
 							<div class="form-field">
@@ -98,8 +98,8 @@
 						 
 								<%= f.text_field :total_cost , :class =>"floatLeft", :id => "cost", :value => '$0', :readonly => "readonly" %>
 							</div>
-
-							<img id="paymentTypes" src="/assets/payment_types.gif" alt="Payment Types: Paypal, Visa, Mastercard, Amex and Discover" />
+							<%= image_tag "payment_types.gif", :alt => "Payment Types: Paypal, Visa, Mastercard, Amex and Discover" %> 
 						</fieldset>
 						<input type="submit" class="btn btn-primary btn-center" id="previewSubmit" value="ONE MORE STEP" />
+					</div>
 		<% end %>

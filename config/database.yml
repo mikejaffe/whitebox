@@ -50,7 +50,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: whitebox_production
+  database: whitebox_development
   pool: 5
-  username: ck
-  password:
+  username: webdev
+  password: t41b4t
+  host: 127.0.0.1
