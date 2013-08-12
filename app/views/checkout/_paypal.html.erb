@@ -5,11 +5,11 @@
 <input type="hidden" name="business" value="john.t.ward@redbankgreen.com">
 <input type="hidden" name="item_name" value="<%= @order.line_items[0].product.name %>">
 <input type="hidden" name="item_number" value="<%= @order.line_items[0].product.sku %>">
-<input type="hidden" name="amount" value="1.00" >
-<!-- <input type="hidden" name="amount" value="<%= @order.line_items[0].product.price * @order.ad_run_days %>"> -->
+<!-- <input type="hidden" name="amount" value="1.00" > -->
+  <input type="hidden" name="amount" value="<%= @order.line_items[0].product.price * @order.ad_run_days %>">  
 <input type="hidden" name="first_name" value="<%= @order.bill_first_name %>">
 <input type="hidden" name="last_name" value="<%= @order.bill_last_name %>">
- <INPUT TYPE="hidden" NAME="return" value="http://mighty-wildwood-1178.herokuapp.com/checkout/complete">
+ <INPUT TYPE="hidden" NAME="return" value="http://rbg-whitebox.herokuapp.com/checkout/complete">
 <input type="hidden" name="email" value="<%= @order.email %>">
 <input type="image" name="submit" border="0"
 src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
