@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 		@order = Order.new(order_params)
 		if @order.valid?
 			@order.save
+			@order.update_attribute("order_session_key",SecureRandom.urlsafe_base64(40))
 			@order.line_items[0].medias << Media.create(params[:medias])
 			session[:order] = @order.id
 			redirect_to order_path(@order)

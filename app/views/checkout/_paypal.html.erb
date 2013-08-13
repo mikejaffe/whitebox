@@ -1,7 +1,7 @@
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="send_to_paypal">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="tx" value="KizQWybCve3uvGY04POOUW-iF0T3jyxFutbiewIcZUwVLlakjOgR4mhBLF8">
-<input type="hidden" name="custom" value="<%= @order.id %>">
+<input type="hidden" name="custom" value="<%= @order.order_session_key %>">
 <input type="hidden" name="business" value="john.t.ward@redbankgreen.com">
 <input type="hidden" name="item_name" value="<%= @order.line_items[0].product.name %>">
 <input type="hidden" name="item_number" value="<%= @order.line_items[0].product.sku %>">

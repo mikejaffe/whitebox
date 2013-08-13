@@ -21,7 +21,7 @@ before_filter :order_session_exists
 	def complete
 		@order = Order.find(session[:order])
 		if params[:cm].present?
-			if params[:cm].eql?(session[:order])
+			if params[:cm].eql?(@order.order_session_key)
 				@order.update_attribute("status",params[:st])
 				@order.update_attribute("paypal_result",params[:tx])
 				session.delete(:order)

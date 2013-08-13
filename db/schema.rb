@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812201950) do
+ActiveRecord::Schema.define(version: 20130813032141) do
 
   create_table "line_items", force: true do |t|
     t.integer  "order_id"
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 20130812201950) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "status",                                   default: "cart"
+    t.string   "status",                                     default: "cart"
     t.string   "ad_url"
     t.string   "ad_mailto"
     t.date     "ad_start_date"
     t.integer  "ad_run_days"
     t.date     "ad_end_date"
-    t.decimal  "total_cost",      precision: 12, scale: 2
+    t.decimal  "total_cost",        precision: 12, scale: 2
     t.string   "email"
     t.string   "company_name"
     t.string   "website"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20130812201950) do
     t.string   "ship_zip"
     t.string   "ship_phone"
     t.string   "paypal_result"
+    t.string   "order_session_key"
   end
 
   create_table "products", force: true do |t|
