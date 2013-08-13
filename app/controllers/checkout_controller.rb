@@ -21,10 +21,12 @@ before_filter :order_session_exists
 	def complete
 		@order = Order.find(session[:order])
 		if params[:cm].present?
-			@order.update_attribute("status",params[:st])
-			@order.update_attribute("paypal_result",params[:tx])
-			session.delete(:order)
-			OrderNotify.order_notification(@order).deliver
+			if params[:cm].eql?(session[:order])
+				@order.update_attribute("status",params[:st])
+				@order.update_attribute("paypal_result",params[:tx])
+				session.delete(:order)
+				OrderNotify.order_notification(@order).deliver
+			end
 		end 
 		# @order = Order.find(params[:cm])
 		# if params[:cm].present?
