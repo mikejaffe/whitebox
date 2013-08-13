@@ -88,8 +88,7 @@ config.action_mailer.smtp_settings = {
   :password             => 'rbgoogle37WBOX>',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
+ 
 
-end
 
-  
 end
