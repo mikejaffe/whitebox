@@ -1,0 +1,22 @@
+Order #: <%= @order.order_number %>
+==============================================================
+
+Name: <%= @order.bill_first_name %> <%= @order.bill_last_name %>
+Address: <%= @order.bill_address1 %>
+Company Name: <%= @order.company_name %>
+Phone: <%= @order.bill_phone %>
+Email: <%= @order.email %>
+Website: <%= @order.website %>
+Order Total: <%=  number_to_currency @order.line_items[0].product.price * @order.ad_run_days %>
+Paypal Transaction: <%= @order.paypal_result %>
+
+Product: <%= @order.line_items[0].product.name %>
+Ad Url: <%= @order.ad_url %>
+Ad Mailto: <%= @order.ad_mailto %>
+Ad Dates: <%= @order.ad_start_date.strftime("%m/%d/%Y") %> - <%= @order.ad_end_date.strftime("%m/%d/%Y") %>
+Ad Run Days: <%= @order.ad_run_days %>
+
+
+Ad Text
+----------------------------------------------
+<%= @order.line_items[0].medias.map{|m| m.media_text }.join("\r").html_safe %>

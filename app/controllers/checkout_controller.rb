@@ -24,8 +24,15 @@ before_filter :order_session_exists
 			@order.update_attribute("status",params[:st])
 			@order.update_attribute("paypal_result",params[:tx])
 			session.delete(:order)
+			OrderNotify.order_notification(@order).deliver
 		end 
-
+		# @order = Order.find(params[:cm])
+		# if params[:cm].present?
+		# 	@order.update_attribute("status",params[:st])
+		# 	@order.update_attribute("paypal_result",params[:tx])
+		# 	session.delete(:order)
+		# 	OrderNotify.order_notification(@order).deliver
+		# end 
 	end
 
 	def pdt
