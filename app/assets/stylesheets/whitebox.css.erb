@@ -33,7 +33,8 @@ h2 { font-size: 31px; line-height: 36px; color: #000; font-weight: normal; margi
 h3 { font-size: 25px; line-height: 29px; color: #000; font-weight: normal; margin: 10px 0 0; }
 p { font-size: 17px; line-height: 27px; margin: 0 0 20px; }
 ul { list-style: none; }
-ul li { padding-left: 15px; background: transparent url(<%= asset_path 'bullet.gif' %>) 0 3px no-repeat; margin: 10px 0; }
+ul li { padding-left: 15px; background: transparent url(<%= asset_path 'bullet.gif' %>) 0 5px no-repeat; margin: 6px 0; }
+#content li { font-size: 15px; }
 
 .subhead { padding: 20px 0 30px; position: relative; margin: 30px 0 0; }
 .subhead h2 { font-size: 23px; color: #000; text-align: center; position: relative; margin: 0; }
@@ -65,7 +66,7 @@ ul#nav-primary, #weather, .searchform { float: left; }
 ul#nav-primary li, ul#nav-secondary li { margin-right: 13px; }
 ul#nav-primary li a, ul#nav-secondary li a { color: #000; text-decoration: none; }
 ul#nav-primary li a:hover, ul#nav-secondary li a:hover { text-decoration: underline; }
-ul#nav-secondary { background: #e8f852; padding: 13px 0; text-align: center; }
+ul#nav-secondary { background: #e8f852; padding: 13px 0; text-align: center; margin-top: 5px; }
 
 /** top search form */
 input#search { width: 127px; border: solid 1px #191919; padding: 4px; color: #999; background: #fff; position: relative; top: -4px; }
@@ -96,7 +97,7 @@ a.btn-rss { background: transparent url(<%= asset_path 'icon_rss.png' %>) no-rep
 /** form elements */
 input[type=text] { height: 14px; background: #f7f7f7; border: solid 1px #d2d2d2; padding: 10px; }
 input[type=text]:focus, 
-input[type=password]:focus {  box-shadow: none; border: solid 1px #ccc; }
+input[type=password]:focus {  box-shadow: none; border: solid 1px #ccc; outline-color: #a3e22a; outline-style: solid; }
 .radio input[type="radio"] {  }
 input.input-default { width: 207px; }
 div.form-field { width: auto; float: left; margin: 0 25px 16px 0; }
@@ -109,18 +110,21 @@ label.lbl-solid {  font-size: 12px; width: 84px; text-align: center; height: 20p
 .btn-clear, .btn-calendar { cursor: pointer; border-top: solid 1px #d2d2d2; border-bottom: solid 1px #d2d2d2; border-right: solid 1px #d2d2d2;}
 .btn-clear img, .btn-calendar img { float: left;}
 
+
 /** pick size */
 h1.hdr_pickSize { width: 675px; height: 0; overflow: hidden; padding-top: 70px; background: #fff url(<%= asset_path 'hdr_pickSize.gif' %>) no-repeat;}
 .size-radio { width: 50%; float: left; }
-#adTextInput { border: solid 6px #000; padding: 40px 40px 10px; width: 580px; margin: 20px 0; }
+#adTextInput { border: solid 6px #000; padding: 40px 61px 10px 67px; width: 554px; margin: 13px 0 20px; }
 #adTextInput ol { list-style: none; margin: 0 auto; }
 #adTextInput li { color: #999; padding-left: 40px; margin-bottom: 29px; }
 #adTextInput input { background: #f7f7f7; border: solid 1px #d4d4d4; color: #999; width: 448px; height: 14px; padding: 10px; }
-span.charCount { margin: 0 10px; }
+span.charCount { margin: 0 0 0 5px; font-size: 13px; }
 span.label-type { top: 10px; }
 li#lineText1 { background: transparent url(<%= asset_path 'adInput1.gif' %>) no-repeat; }
 li#lineText2 { background: transparent url(<%= asset_path 'adInput2.gif' %>) no-repeat; }
 li#lineText3 { background: transparent url(<%= asset_path 'adInput3.gif' %>) no-repeat; }
+p#sizeChosen { margin: 24px 0 0; font-size: 15px; }
+input#adTextSubmit { margin: 0 0 0 56px; }
 
 /** preview */
 input#startDate, input#endDate { width: 141px; }
@@ -155,7 +159,7 @@ div.input-link { position: relative; left: 50px; top: -25px; }
 fieldset#about-form { margin-bottom: 30px; }
 label.businessInfo { height: 34px; }
 input.businessInfo { height: 28px; }
-label.businessInfo { font-size: 11px; line-height: 12px; }
+label.businessInfo { font-size: 12px; line-height: 18px; }
 input#about-submit { width: 144px; }
 
 /** thanks page */
@@ -168,6 +172,7 @@ input#about-submit { width: 144px; }
 	background: #f2dede;
 	padding: 10px;
 	color: #b94a48;
+	max-width: 669px;
 }
 .hide { display: none; }
 

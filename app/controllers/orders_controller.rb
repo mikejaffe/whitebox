@@ -25,15 +25,25 @@ class OrdersController < ApplicationController
 		@order = Order.find(session[:order])
 	end
 
+	def edit
+		@products = Product.all
+		@order = Order.find(session[:order])
+		@product = @order.line_items[0].product
+	end
+
 
 	def update
 		@order = Order.find(session[:order])
 		@order.update_attributes(order_params)
 		if params[:medias].present?
-			@order.line_items[0].medias.destroy
+			@order.line_items[0].medias.delete_all
 			@order.line_items[0].medias << Media.create(params[:medias])
 		end
-		redirect_to edit_checkout_path(@order)
+		if params[:medias].present? # coming from first step
+			render :show #coming from second step
+		else
+			redirect_to edit_checkout_path(@order)
+		end
 	end
 
 

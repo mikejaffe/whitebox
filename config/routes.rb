@@ -6,7 +6,12 @@ Whitebox::Application.routes.draw do
   root 'pages#index'
   get 'checkout/complete' => 'checkout#complete'
   get 'checkout/pdt' => 'checkout#pdt'
-  resources :products ,:checkout,:admin
+  get 'admin/' => 'admin/orders#index'
+  resources :products ,:checkout
+
+  namespace :admin do 
+    resources :orders,:products
+  end
 
   resources :orders do 
 

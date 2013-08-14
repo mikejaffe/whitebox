@@ -6,7 +6,7 @@
 							<li>Your <strong>white box</strong> message appears as three frames of animated text.</li>
 							<li>Each frame has a maximum of 45 characters (no worries, we'll keep count for you).</li>
 							<li>It's best to keep <strong>white box</strong> messages brief and to the point.</li>
-							<li>Be sure to check your spelling</li>
+							<li>Be sure to check your spelling.</li>
 						</ul>
 
 						<p id="sizeChosen">You've chosen the <strong><%= @product.name %></strong> format. Enter your <strong>white box</strong> text here:</p>
@@ -17,10 +17,10 @@
 									 <ol>
 										<% @product.line_count.times do |x|  %>
 											<% c = x + 1 %>
-											<li id="lineText<%= c %>" class="lineText"><input type="text" id="line<%= c %>" class="lineTextInput" data-line="<%= c %>" name="medias[][media_text]" placeholder="ENTER FIRST FRAME OF ANIMATED TEXT HERE (MAXIMUM 45 CHARACTERS)" maxlength="45"> <span class="charCount"><span id="count<%= c %>" >0</span>/45</span></li>
+											<li id="lineText<%= c %>" class="lineText"><input value="<%= @order.line_items[0].medias[x].media_text if @order.line_items[0].present? %>" type="text" id="line<%= c %>" class="lineTextInput" data-line="<%= c %>" name="medias[][media_text]" placeholder="ENTER FIRST FRAME OF ANIMATED TEXT HERE (MAXIMUM <%= @product.char_count %> CHARACTERS)" maxlength="<%= @product.char_count %>"> <span class="charCount"><span id="count<%= c %>" >0</span>/<%= @product.char_count %></span></li>
 										<% end %>
 									</ol>
 								<% end %>
 						</div>
 						
-						<input type="submit" id="adTextSubmit" class="btn btn-primary btn-center" value="AFTER YOU'VE ENTERED ALL YOUR TEXT ABOVE, CLICK HERE TO GENERATE AD PROOF." />
+						<input type="submit" id="adTextSubmit" class="btn btn-primary" value="AFTER YOU'VE ENTERED ALL YOUR TEXT ABOVE, CLICK HERE TO GENERATE AD PROOF." />

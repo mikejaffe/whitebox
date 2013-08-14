@@ -16,33 +16,20 @@
 //= require_tree .
 $(document).ready(function() {
 
-	if($("#about-submit")) {
-		$("#about-submit").click(function(e) {
-			e.preventDefault();
-			if ( validateCheckout() ) {
-
-				//-- send order vars --- 
-				$.ajax({
-					url: '/checkout/0',
-					type: 'PUT', 
-					data: $("#checkout_form").serialize(),
-					success : function(data) {
-						$("#paypal").html(data);
-						$("#send_to_paypal").submit();
-					}
-				})
-				 
-				
-				//$("#checkout_form").submit();
-			}
-		});
-	}
-
 	if ($('#startDate') && $('#endDate')) {
 
-    	$( "#startDate" ).datepicker({ minDate: 'today' });
+    	$( "#startDate" ).datepicker({ 
+    		minDate: 'today',
+    		onSelect: function() {
+    			//enable end datepicker
+				$('#endDate').datepicker('option', { disabled: false });
+    		} 
+    	});
+
     	$( "#endDate" ).datepicker({
     		beforeShow: setMinDate,
+    		onSelect: setRun,
+    		disabled: true
     	});
 
     	$('.btn-calendar').on('click', function(e){
@@ -53,7 +40,16 @@ $(document).ready(function() {
 		$('.btn-clear').on('click', function(e){
 			$(this).siblings('input').val('');
 		});
-  
+  	
+  		$('.src-input').on('focus', function(e){
+  			var opt = $(this).attr('id');
+  			var $elem = (opt == 'sourceweb') ? $("input[name='adSource'][value='web']") : $("input[name='adSource'][value='email']");
+  			
+  			if ($elem.prop('checked') == false) {
+	  			$("input[name='adSource']").parent('span').toggleClass('checked');
+	  			$elem.prop('checked', true);
+  			}
+  		});
 	}
 
 	if ($(".size-option")) {
@@ -119,6 +115,18 @@ function setPrice(days) {
 	$('#cost').val('$' + totalCost);
 }
 
+function setRun(date, obj) {
+	
+	var oneDay = 24*60*60*1000; 
+	var start = $('#startDate').datepicker('getDate');;
+	var end = $('#endDate').datepicker('getDate');;
+
+	var days = Math.round(Math.abs((start.getTime() - end.getTime())/(oneDay)));
+	$('#runDays').val(days);
+	setPrice(days);
+	
+}
+
 function validateDays(evt) {
 	var theEvent = evt || window.event;
 	var key = theEvent.keyCode || theEvent.which;
@@ -133,27 +141,3 @@ function validateDays(evt) {
 
 	}
 }
-
-
-function validateCheckout() {
-	if($("#fname").val() == "") {
-		$(".error").html("Please enter your first name").show();
-		return false;
-	}
-	if($("#lname").val() == "") {
-		$(".error").html("Please enter your last name").show();
-		return false;
-	}
-	if($("#email").val() == "") {
-		$(".error").html("Please enter your email address").show();
-		return false;
-	}
-	if($("#address").val() == "") {
-		$(".error").html("Please enter your address").show();
-		return false;
-	}
-	return true;
- 
-}
-
-

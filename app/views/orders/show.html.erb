@@ -7,7 +7,7 @@
 					<% if @order.line_items[0].product.sku.eql?("tall-box") %>
 										<div id="preview-tall-info">
 						<h1>Ok, here's how your <strong>white box</strong> ad will look:</h1>
-						<p><!--<a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> --> <a class="btn btn-primary btn-preview" href="/orders/new">TRY AGAIN</a> </p>
+						<p><!--<a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> --> <a class="btn btn-primary btn-preview" href="<%= edit_order_path(@order) %>">TRY AGAIN</a> </p>
 						<p class="notice">Please Note: All <strong>white box</strong> ads are subject to prior review; once the <strong>white box</strong> ad has been approved for posting, you will receive an email notice. If your ad is rejected, you will have the opportunity to revise the ad or cancel the order.</p>
 					</div>
 					<div id="preview-tall" class="whitebox-ad whitebox-ad-tall">
@@ -31,7 +31,7 @@
 						<!--<img id="preview-flat" class="floatLeft" src="/assets/preview_flat.gif" /> -->
 						<div class="preview-buttons floatLeft">
 							<% # <a class="btn btn-primary btn-preview" href="#/">GOOD TO GO</a> %>
-							<a class="btn btn-primary btn-preview" href="/orders/new">TRY AGAIN</a>
+							<a class="btn btn-primary btn-preview" href="<%= edit_order_path(@order) %>">TRY AGAIN</a>
 						</div>
 
 						<div class="clear"></div>
@@ -93,7 +93,7 @@
 							<div class="form-field">
 								<label id="lbl-run" class="lbl-solid floatLeft" for="runDays">TOTAL RUN<br />IN DAYS</label>
 							 
-								<%= f.text_field :ad_run_days , :class =>"floatLeft", :id => "runDays" %>
+								<%= f.text_field :ad_run_days , :class =>"floatLeft", :id => "runDays", :readonly => "readonly", :value => "0" %>
 								<label id="lbl-cost" class="lbl-solid floatLeft" for="cost">TOTAL<br />COST</label>
 						 
 								<%= f.text_field :total_cost , :class =>"floatLeft", :id => "cost", :value => '$0', :readonly => "readonly" %>

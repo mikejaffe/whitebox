@@ -1,0 +1,45 @@
+<script type="text/javascript">
+ $(document).ready(function() {
+		$(".field").change(function(){
+			current_row = $(this).closest('tr');
+			id = $(this).closest('tr').data("id");
+			$.ajax({
+				url: '/admin/products/' + id,
+				type: 'PUT',
+			 
+				data: $(current_row).find("input").serialize(),
+			})
+			.done(function() {
+				$("#result").show().html("Product Saved").css({"color":"green"}).fadeOut('slow')
+			})
+			.fail(function(jqXHR, textStatus)  {
+				$("#result").show().html(jqXHR.responseText).css({"color":"red"});
+			})
+			.always(function() {
+				//console.log("complete");
+			});
+			
+		});
+	});
+</script>
+<h3>Whitebox Products</h3>
+<span style="color:green;" id="result">&nbsp;</span>
+<table border="1" cellspacing="3" cellpadding="4" style="border-collapse:collapse;">
+<tr>
+<th>Name</th>
+<th>Sku</th>
+<th>Description</th>
+<th>Price</th>
+<th>Line Count</th>
+<th>Character Count</th>
+</tr>
+<% @products.each do |p| %>
+<tr data-id="<%= p.id %>"  class="<%= cycle("odd", "even") %>">
+<td><input type="input" class="field" name="product[name]" value="<%= p.name %>"></td>
+<td><input type="input" class="field" name="product[sku]" value="<%= p.sku %>"></td>
+<td><input type="input" class="field" name="product[description]" value="<%= p.description %>"></td>
+<td><input type="input" class="field" name="product[price]" value="<%= p.price %>"></td>
+<td><input type="input" class="field" name="product[line_count]" value="<%= p.line_count %>"></td>
+<td><input type="input" class="field" name="product[char_count]" value="<%= p.char_count %>"></td>
+</tr>
+<% end %>

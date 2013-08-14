@@ -1,0 +1,42 @@
+<h3>Whitebox Orders</h3>
+<span style="font-size:11px">[ <a href="/admin/orders.csv">Download Excel File</a> ]</span>
+
+<br><br>
+<table border="1" cellspacing="3" cellpadding="4" style="border-collapse:collapse;">
+<tr>
+<th>Order Number</th>
+<th>PayPal Trans</th>
+<th>Status</th>
+<th>Created</th>
+<th>Name</th>
+<th>Email</th>
+<th>Product</th>
+<th>Ad Url</th>
+<th>Ad Mailto</th>
+<th>Ad Dates</th>
+<th>Run Days</th>
+<th>Order Total</th>
+<th>Ad Text</th>
+</tr>
+<% @orders.each do |order| %>
+<tr class="<%= cycle("odd", "even") %>">
+<td><%= order.order_number %></td>
+<td><%= order.paypal_result %></td>
+<td><%= order.status %></td>
+<td><%= order.created_at.strftime("%m/%d/%Y %I:%M:%S") %></td>
+<td><%= order.bill_first_name %> <%= order.bill_last_name %></td>
+<td><%= order.email %></td>
+<td><%= order.line_items[0].product.name %></td>
+<td><%= order.ad_url %></td>
+<td><%= order.ad_mailto %></td>
+<td><%= order.ad_start_date.strftime("%m/%d/%Y") %> - <%= order.ad_end_date.strftime("%m/%d/%Y") %></td>
+<td><%= order.ad_run_days %></td>
+<td><%=  number_to_currency order.line_items[0].product.price * order.ad_run_days %></td>
+<td><%= order.line_items[0].medias.map{|m| m.media_text }.join("<br>").html_safe %></td>
+
+
+</tr>
+<% end %>
+</table>
+<br>
+<%= will_paginate %>
