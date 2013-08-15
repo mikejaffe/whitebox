@@ -26,7 +26,7 @@ Whitebox ad preview text rotation plugin
 
 				function init() {
 					if (type == 'tall') {
-						verticalAlign();
+						setTimeout(verticalAlign, 100);
 					}
 
 					startRotation();

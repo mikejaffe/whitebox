@@ -16,6 +16,30 @@
 //= require_tree .
 $(document).ready(function() {
 
+	if($("#about-submit")) {
+		$("#about-submit").click(function(e) {
+			e.preventDefault();
+			if ( validateCheckout() ) {
+
+				//-- send order vars --- 
+				$.ajax({
+					url: '/checkout/0',
+					type: 'PUT', 
+					data: $("#checkout_form").serialize(),
+					success : function(data) {
+						$("#paypal").html(data);
+						$("#send_to_paypal").submit();
+					}
+				})
+				 
+				
+				//$("#checkout_form").submit();
+			}
+		});
+	}
+
+
+
 	if ($('#startDate') && $('#endDate')) {
 
     	$( "#startDate" ).datepicker({ 
@@ -23,7 +47,8 @@ $(document).ready(function() {
     		onSelect: function() {
     			//enable end datepicker
 				$('#endDate').datepicker('option', { disabled: false });
-    		} 
+				setRun();
+    		}
     	});
 
     	$( "#endDate" ).datepicker({
@@ -89,8 +114,6 @@ $(document).ready(function() {
 
 	if ($('#cost')) {
 
-		$('#runDays').on('keypress', validateDays);
-
 		// set cost (if applicable)
 		if ($('#runDays').val() !== '') {
 			var numDays = $('#runDays').val();
@@ -117,27 +140,34 @@ function setPrice(days) {
 
 function setRun(date, obj) {
 	
-	var oneDay = 24*60*60*1000; 
-	var start = $('#startDate').datepicker('getDate');;
-	var end = $('#endDate').datepicker('getDate');;
+	if ($('#startDate').val() !== '' && $('#endDate').val() !== '') {
+		var oneDay = 24*60*60*1000; 
+		var start = $('#startDate').datepicker('getDate');;
+		var end = $('#endDate').datepicker('getDate');;
 
-	var days = Math.round(Math.abs((start.getTime() - end.getTime())/(oneDay)));
-	$('#runDays').val(days);
-	setPrice(days);
-	
+		var days = Math.round(Math.abs((start.getTime() - end.getTime())/(oneDay)));
+		$('#runDays').val(days);
+		setPrice(days);
+	}
 }
 
-function validateDays(evt) {
-	var theEvent = evt || window.event;
-	var key = theEvent.keyCode || theEvent.which;
-	key = String.fromCharCode( key );
-	var regex = /[0-9]|\./;
-	if( !regex.test(key) ) {
-		theEvent.returnValue = false;
-		if(theEvent.preventDefault) { 
-			theEvent.preventDefault(); 
-			theEvent.stopPropagation();
-		}
-
+function validateCheckout() {
+	if($("#fname").val() == "") {
+		$(".error").html("Please enter your first name").show();
+		return false;
 	}
+	if($("#lname").val() == "") {
+		$(".error").html("Please enter your last name").show();
+		return false;
+	}
+	if($("#email").val() == "") {
+		$(".error").html("Please enter your email address").show();
+		return false;
+	}
+	if($("#address").val() == "") {
+		$(".error").html("Please enter your address").show();
+		return false;
+	}
+	return true;
+ 
 }
