@@ -12,7 +12,7 @@ before_filter :order_session_exists
 		if @order.update_attributes(order_params)
 			render :partial => "paypal"
 		else
-			render :text => 0
+			render :text => "0"
 		end
 
 	end
